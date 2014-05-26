@@ -1,10 +1,6 @@
 # doit
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+A guide to Clojure web development with Pedestal and Datomic. The [wiki](https://github.com/floriansalihovic/doit/wiki) will provide an extensive documentation and the [repository](https://github.com/floriansalihovic/doit/wiki) the contributed code.
 
 ## License
 
