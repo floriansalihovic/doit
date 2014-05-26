@@ -18,3 +18,6 @@
               :todo/completed? false}
             description (assoc :todo/description description)
             true vector))
+
+(defn create-todo [title description]
+  @(d/transact conn (todo-tx title description)))
