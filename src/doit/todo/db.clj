@@ -21,3 +21,9 @@
 
 (defn create-todo [title description]
   @(d/transact conn (todo-tx title description)))
+
+(defn all-todos [db]
+         (->> (d/q '[:find ?id
+                     :where [?id :todo/title]] db)
+         (map first)
+         (map #(d/entity db %))))
