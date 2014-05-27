@@ -1,4 +1,4 @@
-(ns todoit.todo.db
+(ns doit.todo.db
     (:require [datomic.api :as d]))
 
 (defonce uri (str "datomic:mem://" (gensym "todos")))
