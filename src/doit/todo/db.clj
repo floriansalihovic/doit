@@ -27,3 +27,9 @@
                      :where [?id :todo/title]] db)
          (map first)
          (map #(d/entity db %))))
+
+(defn toggle-status [id status]
+  @(d/transact conn [[:db/add id :todo/completed? status]]))
+
+(defn delete-todo [id]
+  @(d/transact conn [[:db.fn/retractEntity id]]))
