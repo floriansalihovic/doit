@@ -14,8 +14,8 @@
 
 (defn todo-tx [title description]
     (cond-> {:db/id (d/tempid :db.part/user)
-              :todo/title title
-              :todo/completed? false}
+             :todo/title title
+             :todo/completed? false}
             description (assoc :todo/description description)
             true vector))
 
@@ -23,10 +23,17 @@
   @(d/transact conn (todo-tx title description)))
 
 (defn all-todos [db]
-         (->> (d/q '[:find ?id
-                     :where [?id :todo/title]] db)
-         (map first)
-         (map #(d/entity db %))))
+  (->> (d/q '[:find ?id
+              :where [?id :todo/title]] db)
+       (map first)
+       (map #(d/entity db %))))
+
+(defn completed-todos [db]
+  (->> (d/q '[:find ?id
+              :where [?id :todo/title]
+                     [?id :todo/completed? true]] db)
+       (map first)
+       (map #(d/entity db %))))
 
 (defn toggle-status [id status]
   @(d/transact conn [[:db/add id :todo/completed? status]]))
