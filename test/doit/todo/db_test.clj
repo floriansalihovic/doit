@@ -19,9 +19,9 @@
     (let [todo (first (db/all-todos (d/db db/conn)))
           id (:db/id todo)]
       (is (= true (:todo/completed? todo)))))
-  (testing "if the completed todo can be found.."
+  (testing "if a completed todo can be found."
     (is (= 1 (count (db/completed-todos (d/db db/conn))))))
-  (testing "if a todo can be delted."
+  (testing "if a todo can be deleted."
     (let [todo (first (db/all-todos (d/db db/conn)))
           id (:db/id todo)]
       (db/delete-todo id)
