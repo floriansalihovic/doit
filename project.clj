@@ -9,4 +9,5 @@
                                org.slf4j/slf4j-nop]]
                  [io.pedestal/pedestal.service "0.3.0"]
                  [io.pedestal/pedestal.service-tools "0.3.0"]
-                 [io.pedestal/pedestal.jetty "0.3.0"]])
+                 [io.pedestal/pedestal.jetty "0.3.0"]
+                 [ns-tracker "0.2.2"]])
