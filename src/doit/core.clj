@@ -11,7 +11,12 @@
 (defroutes routes
   [[["/" ["/hello" {:get hello-world}]]]])
 
-(def service {::http/interceptors [(router routes)]
+(def modified-namespaces (ns-tracker "src"))
+
+(def service {::http/interceptors [(router (fn []
+                                             (doseq [ns-sym (modified-namespaces)]
+                                               (require ns-sym :reload))
+                                             routes))]
               ::http/port 8080})
 
 (defn -main [& args]
