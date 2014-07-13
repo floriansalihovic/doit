@@ -3,15 +3,12 @@
             [io.pedestal.http.route :as route :refer [router]]
             [io.pedestal.http :as http]
             [ring.handler.dump :refer [handle-dump]]
-            [ns-tracker.core :refer [ns-tracker]]))
-
-(defn hello-world [req]
-  {:status 200
-   :body "Hello, world!"
-   :headers {}})
+            [ns-tracker.core :refer [ns-tracker]]
+            [doit.todo :as todo :refer [index]]))
 
 (defroutes routes
-  [[["/" ["/hello" {:get hello-world}]]]])
+  [[["/"
+     ["/todos" {:get [:todos todo/index]}]]]])
 
 (def modified-namespaces (ns-tracker "src"))
 
