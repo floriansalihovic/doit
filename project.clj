@@ -10,5 +10,6 @@
                  [io.pedestal/pedestal.service "0.3.0"]
                  [io.pedestal/pedestal.service-tools "0.3.0"]
                  [io.pedestal/pedestal.jetty "0.3.0"]
+                 [ring/ring-devel "1.2.2"]
                  [ns-tracker "0.2.2"]]
   :main doit.core)
